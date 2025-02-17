@@ -9,10 +9,10 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 # Bot Configuration
 API_ID = 27796607
 API_HASH = "56d68cab1e7c1a8e64ea7e77383cec84"
-BOT_TOKEN = ""
+BOT_TOKEN = "7957099017:AAEv1Qkw3dlTwP5f9UJeEepNpKSU0CRmoNg"
 MONGO_URL = "mongodb+srv://itfeel469:Xn1dAIDqHKhb0pGz@cluster0.gs9yv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 DB_NAME = "itfeel469"
-PORT = int(os.environ.get("PORT", 5000))
+PORT = int(os.environ.get("PORT", 8080))
 
 # Link Shortener APIs
 AROLINKS_API = "67e76cbd040936bca1cfd2944edb65754bac2361"
