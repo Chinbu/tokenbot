@@ -1,15 +1,18 @@
 import time
 import pymongo
 import requests
+import os
+from flask import Flask
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 # Bot Configuration
 API_ID = 27796607
 API_HASH = "56d68cab1e7c1a8e64ea7e77383cec84"
-BOT_TOKEN = ""
+BOT_TOKEN = "7957099017:AAEv1Qkw3dlTwP5f9UJeEepNpKSU0CRmoNg"
 MONGO_URL = "mongodb+srv://itfeel469:Xn1dAIDqHKhb0pGz@cluster0.gs9yv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 DB_NAME = "itfeel469"
+PORT = int(os.environ.get("PORT", 5000))
 
 # Link Shortener APIs
 AROLINKS_API = "67e76cbd040936bca1cfd2944edb65754bac2361"
@@ -25,6 +28,11 @@ users_collection = db["verified_users"]
 
 # Initialize Bot
 bot = Client("TokenVerificationBot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Bot is running..."
 
 def shorten_url(api, url):
     response = requests.get(f"https://{api.split('_')[0]}.com/api?api={api}&url={url}")
@@ -114,5 +122,5 @@ def list_channels(client, message):
 
 if __name__ == "__main__":
     print("Bot is running...")
-    bot.run()
-
+    bot.start()
+    app.run(host="0.0.0.0", port=PORT)
